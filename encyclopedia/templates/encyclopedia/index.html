@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    <ul>
+        <!-- Use a loop to add entries -->
+        {% for entry in entries %}
+            <li><a href="{% url 'entry' title=entry %}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
+<!-- Personal notes:
+
+Line 13: use a href to create a hyperlink, where the variable 'entry' 
+(the name of the path) will refer to 
+-->

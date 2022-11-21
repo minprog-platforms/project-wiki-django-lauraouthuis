@@ -1,0 +1,29 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    {{ content | safe }}
+
+    <form action="{% url 'edit_page' %}" method="POST">
+        {% csrf_token %} 
+        <input type="hidden" name="entry_title" value="{{ title }}">
+        <input type="submit" value="Edit">
+    </form>
+
+{% endblock %}
+
+
+<!-- Personal notes:
+
+Line 8: use '| safe' after the variable name for the content to make sure
+the content of the entry is displayed in regular text rather than HTML code 
+
+About 'safe' from Django documentation: Marks a string as not requiring further 
+HTML escaping prior to output. When autoescaping is off, this filter has no effect.
+Source: https://docs.djangoproject.com/en/4.1/ref/templates/builtins/
+
+Line 12: use the input type 'hidden', so we know which entry we want to change
+-->

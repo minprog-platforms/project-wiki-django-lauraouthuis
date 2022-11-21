@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Error</h1>
+
+    <p>{{ error_message }}</p>
+
+{% endblock %}
+
+
+<!-- Personal notes 
+
+Line 10: Je zou ook kunnen doen: <p>This entry does not exist.</p> en dan de
+message bij views.py weghalen, maar dan moet je voor alle errors dit lokaal aanpassen 
+
+-->

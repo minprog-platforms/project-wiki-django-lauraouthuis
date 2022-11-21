@@ -1,0 +1,37 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>New page</h1>
+
+    <!-- Create a form to ask user for new page title input -->
+    <form action="{% url 'new_page' %}" method="POST">
+        {% csrf_token %}
+        <label for=title>Title: </label>
+        <input label="Title" type="text" id="title" name="title" placeholder="Title of the new page"> 
+        <br>
+
+    <!-- Create a form to ask user for new page content input -->
+        <br>
+        <label for=content>Content: </label>
+        <br>
+        <textarea id="content" name="content" placeholder="Content of the new page"></textarea>
+        <br>
+        <input type="submit" value="Submit">
+        <br>
+    </form>
+
+{% endblock %}
+
+<!-- Personal notes:
+
+Source used for form and input: 
+https://www.w3schools.com/tags/att_form_action.asp
+https://www.w3schools.com/tags/tag_input.asp
+https://www.w3schools.com/tags/tag_textarea.asp
+Use placeholder to display what the user should input in the form
+Use label to display before the form what the input should be 
+ -->
