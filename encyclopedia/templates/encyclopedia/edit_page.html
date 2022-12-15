@@ -1,25 +1,26 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Encyclopedia
+Encyclopedia
 {% endblock %}
 
 {% block body %}
-    <h1>Edit page</h1>
-    <form action="{% url 'save_edit' %}" method="POST">
-        {% csrf_token %}
-        <label for=title>Title: </label>
-        <input label="Title" type="text" id="title" name="title" placeholder="Title of the new page" value="{{ title }}"> 
-        <br>
+<h1>Edit page</h1>
 
-        <br>
-        <label for=content>Content: </label>
-        <br>
-        <textarea id="content" name="content" placeholder="Content of the new page">{{ content }}</textarea>
-        <br>
-        <input type="submit" value="Save edit">
-        <br>
-    </form>
+<!-- Form to edit an entry page. -->
+<form action="{% url 'save_edit' %}" method="POST">
+    {% csrf_token %}
+    <label for=title>Title: </label>
+    <input label="Title" type="text" id="title" name="title" placeholder="Title of the new page" value="{{ title }}">
+    <br>
+
+    <br>
+    <label for=content>Content: </label>
+    <br>
+    <textarea id="content" name="content" placeholder="Content of the new page">{{ content }}</textarea>
+    <br>
+    <input type="submit" value="Save edit">
+    <br>
+</form>
 
 {% endblock %}
-

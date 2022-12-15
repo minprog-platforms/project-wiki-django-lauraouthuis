@@ -3,55 +3,48 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <title>{% block title %}{% endblock %}</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
-    </head>
-    <body>
-        <div class="row">
-            <!-- Create side bar on the left of the page -->
-            <div class="sidebar col-lg-2 col-md-3">
-                <h2>Wiki</h2>
-                <!-- Form to search for an entry page -->
-                <form action="{% url 'search' %}" method="POST">
-                    <!-- use csrf token to make sure the request is secure -->
-                    {% csrf_token %} 
-                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
-                </form>
-                <div>
-                    <!-- Go to home page -->
-                    <a href="{% url 'index' %}">Home</a>
-                </div>
-                <div>
-                    <!-- Create a new page -->
-                    <a href="{% url 'new_page' %}">Create new page</a>
-                </div>
-                <div>
-                    <!-- Send user to a random entry -->
-                    <a href="{% url 'random_page' %}">Random page</a>
-                </div>
-                {% block nav %}
-                {% endblock %}
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="row">
+        <!-- Create side bar on the left of the page -->
+        <div class="sidebar col-lg-2 col-md-3">
+            <h2>Wiki</h2>
+            <!-- Form to search for an entry page -->
+            <form action="{% url 'search' %}" method="POST">
+                <!-- use csrf token to make sure the request is secure -->
+                {% csrf_token %}
+                <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+            </form>
+            <div>
+                <!-- Go to home page -->
+                <a href="{% url 'index' %}">Home</a>
             </div>
-            <div class="main col-lg-10 col-md-9">
-                {% block body %}
-                {% endblock %}
+            <div>
+                <!-- Create a new page -->
+                <a href="{% url 'new_page' %}">Create new page</a>
             </div>
+            <div>
+                <!-- Send user to a random entry -->
+                <a href="{% url 'random_page' %}">Random page</a>
+            </div>
+            {% block nav %}
+            {% endblock %}
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    </body>
+        <div class="main col-lg-10 col-md-9">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
-
-<!-- Personal notes:
-    
-Line 17: use action to send the data from the url to views.py and use
-method="POST" to send the data to the backend 
-
-GET method = used to request data from a specified resource (displays the page)
-POST method = used to send data to a server to create/update a resource (used when 
-sending data like clicking the search button)
-Source: https://www.w3schools.com/tags/ref_httpmethods.asp
-
--->
-

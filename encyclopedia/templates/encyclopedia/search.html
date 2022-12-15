@@ -3,16 +3,17 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Encyclopedia
+Encyclopedia
 {% endblock %}
 
 {% block body %}
-    <h1>Search</h1>
+<h1>Search</h1>
 
-    <ul>
-        {% for entry in similar_entries %}
-            <li><a href="{% url 'entry' title=entry %}">{{ entry }}</a></li>
-        {% endfor %}
-    </ul>
+<!-- Loop to show entries -->
+<ul>
+    {% for entry in similar_entries %}
+    <li><a href="{% url 'entry' title=entry %}">{{ entry }}</a></li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
